@@ -14,7 +14,6 @@ This project demonstrates basic **TypeScript usage** for frontend development, i
 The goal of this task is to render a table of students and their locations in the browser using TypeScript, compiled and bundled with **Webpack**.
 
 ---
-
 ## Project Structure
 
 ```

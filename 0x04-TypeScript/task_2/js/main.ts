@@ -53,3 +53,6 @@ export function executeWork(employee: Director | Teacher): string {
         return employee.workTeacherTasks();
     }
 }
+
+console.log(createEmployee(200) instanceof Teacher); // true 
+console.log(createEmployee(1000) instanceof Director); // true

@@ -1,58 +1,24 @@
-interface DirectorInterface{
-    workFromHome(): string;
-    getCoffeeBreak(): string;
-    workDirectorTasks(): string;
-}
-interface TeacherInterface {
-    workFromHome(): string;
-    getCoffeeBreak(): string;
-    workTeacherTasks(): string;
-}
+/// <reference path="./subjects/Cpp.ts" />
+/// <reference path="./subjects/Java.ts" />
+/// <reference path="./subjects/React.ts" />
 
-class Director implements DirectorInterface{
-    workFromHome(): string {
-        return 'Working from home';
-    }
-    getCoffeeBreak(): string {
-        return 'Getting a coffee break';
-    }
-    workDirectorTasks(): string {
-        return 'Getting to director tasks';
-    }
-}
-class Teacher implements TeacherInterface{
-    workFromHome(): string {
-        return 'Cannot work from home';
-    }
-    getCoffeeBreak(): string {
-        return 'Cannot have a break';
-    }
-    workTeacherTasks(): string {
-        return 'Getting to work';
-    }
-}
+import Subjects from './subjects/Subject';
 
-function createEmployee(salary: number | string): Director | Teacher {
-    if (typeof salary === 'number') {
+const cpp = new Subjects.Cpp();
+const java = new Subjects.Java();
+const react = new Subjects.React();
 
-        if (salary < 500) {
-            return new Teacher();
-        }
-        return new Director();  
-    }
-    return new Director();
-}
+export const cTeacher: Subjects.Teacher = { firstName: 'John', lastName: 'Doe', experienceTeachingCpp: 10 };
 
-export function isDirector(employee: Director | Teacher): employee is Director {
-  return employee instanceof Director;
-}
-export function executeWork(employee: Director | Teacher): string {
-    if (isDirector(employee)) { 
-        return employee.workDirectorTasks();
-    } else {
-        return employee.workTeacherTasks();
-    }
-}
+console.log("Cpp");
+cpp.setTeacher(cTeacher);
+console.log(cpp.getRequirements());
+console.log(cpp.getAvailableTeacher());
 
-console.log(createEmployee(200) instanceof Teacher); // true 
-console.log(createEmployee(1000) instanceof Director); // true
+console.log("\nJava");
+console.log(java.getRequirements());
+console.log(java.getAvailableTeacher());
+
+console.log("\nReact");
+console.log(react.getRequirements());
+console.log(react.getAvailableTeacher());
